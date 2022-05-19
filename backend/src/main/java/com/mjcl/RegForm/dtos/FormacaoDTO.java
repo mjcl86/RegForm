@@ -1,27 +1,22 @@
-package com.mjcl.RegForm.controllers.entities;
+package com.mjcl.RegForm.dtos;
 
-import javax.persistence.*;
-import java.util.Date;
+import com.mjcl.RegForm.entities.Formacao;
 
-@Entity
-@Table(name = "formacoes")
-public class Formacao {
+public class FormacaoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String start;
     private String end;
 
-    public Formacao() {
+    public FormacaoDTO() {
     }
 
-    public Formacao(Integer id, String name, String start, String end) {
-        this.id = id;
-        this.name = name;
-        this.start = start;
-        this.end = end;
+    public FormacaoDTO(Formacao formacao) {
+        this.id = formacao.getId();
+        this.name = formacao.getName();
+        this.start = formacao.getStart();
+        this.end = formacao.getEnd();
     }
 
     public Integer getId() {
@@ -55,5 +50,4 @@ public class Formacao {
     public void setEnd(String end) {
         this.end = end;
     }
-
 }

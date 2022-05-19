@@ -1,4 +1,4 @@
-package com.mjcl.RegForm.controllers.entities;
+package com.mjcl.RegForm.entities;
 
 import javax.persistence.*;
 
