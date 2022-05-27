@@ -2,13 +2,16 @@ package com.mjcl.RegForm.dtos;
 
 import com.mjcl.RegForm.entities.Formacao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FormacaoDTO {
 
     private Integer id;
     private String name;
     private String start;
     private String end;
-
+    private List<AlunaDTO> students = new ArrayList<>();
     public FormacaoDTO() {
     }
 

@@ -1,7 +1,12 @@
 package com.mjcl.RegForm.entities;
 
+import com.mjcl.RegForm.dtos.AlunaDTO;
+import com.mjcl.RegForm.dtos.FormacaoDTO;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "formacoes")
@@ -14,14 +19,16 @@ public class Formacao {
     private String start;
     private String end;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Aluna> students = new ArrayList<>();
+
     public Formacao() {
     }
 
-    public Formacao(Integer id, String name, String start, String end) {
-        this.id = id;
-        this.name = name;
-        this.start = start;
-        this.end = end;
+    public Formacao(FormacaoDTO dto) {
+        this.name = dto.getName();
+        this.start = dto.getStart();
+        this.end = dto.getEnd();
     }
 
     public Integer getId() {
@@ -56,4 +63,17 @@ public class Formacao {
         this.end = end;
     }
 
+    public List<Aluna> getStudents() {
+        return students;
+    }
+
+    public void addAluna(Aluna aluna) {
+        students.add(aluna);
+    }
+
+    public void removeAluna(Integer alunaId) {
+        if (students.contains(students.get(alunaId))) {
+            students.remove(alunaId);
+        }
+    }
 }

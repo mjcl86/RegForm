@@ -1,6 +1,11 @@
 package com.mjcl.RegForm.dtos;
 
 import com.mjcl.RegForm.entities.Aluna;
+import com.mjcl.RegForm.entities.Formacao;
+import com.mjcl.RegForm.entities.Nota;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AlunaDTO {
 
@@ -9,6 +14,8 @@ public class AlunaDTO {
     private String lastname;
     private String email;
     private String city;
+    private Integer contact;
+    private List<NotaDTO> results = new ArrayList<>();
 
     public AlunaDTO() {
     }
@@ -19,6 +26,8 @@ public class AlunaDTO {
         this.lastname = aluna.getLastname();
         this.email = aluna.getEmail();
         this.city = aluna.getCity();
+        this.contact = aluna.getContact();
+        setResults(aluna.getResults());
     }
 
     public Integer getId() {
@@ -59,5 +68,24 @@ public class AlunaDTO {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public Integer getContact() {
+        return contact;
+    }
+
+    public void setContact(Integer contact) {
+        this.contact = contact;
+    }
+
+    public List<NotaDTO> getClasses() {
+        return results;
+    }
+
+    public void setResults(List<Nota> list) {
+        for(Nota res : list){
+            NotaDTO notaDTO = new NotaDTO(res);
+            results.add(notaDTO);
+        }
     }
 }

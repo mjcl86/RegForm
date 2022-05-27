@@ -1,0 +1,33 @@
+header {
+    background-color: var(--color-primary);
+}
+
+.regform-nav-content {
+    display: flex;
+    flex-direction:row;
+    justify-content:space-between;
+    height: 200px;
+}
+
+.regform-nav-github {
+    
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    height: 28px;
+    width: 90px;
+}
+
+.regform-nav-github div {
+    display: flex;
+    flex-direction: row;
+    color: black;
+}
+
+.regform-nav-github div p {
+    margin: 0 0 0 7px;
+}
+
+
+
+

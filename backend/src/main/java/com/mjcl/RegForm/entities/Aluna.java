@@ -1,6 +1,10 @@
 package com.mjcl.RegForm.entities;
 
+import com.mjcl.RegForm.dtos.AlunaDTO;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "alunas")
@@ -13,19 +17,32 @@ public class Aluna {
     private String lastname;
     private String email;
     private String city;
+    private Integer contact;
 
-    private String contact;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Nota> results = new ArrayList<>();
 
     public Aluna() {
     }
 
-    public Aluna(Integer id, String firstName, String lastName, String email, String city, String contact) {
+    public Aluna(Integer id, String firstName, String lastName, String email, String city, Integer contact) {
         this.id = id;
         this.firstname = firstName;
         this.lastname = lastName;
         this.email = email;
         this.city = city;
         this.contact = contact;
+    }
+
+    public Aluna(AlunaDTO dto) {
+        if(dto.getId() != 0){
+            this.id = dto.getId();
+        }
+        this.firstname = dto.getFirstname();
+        this.lastname = dto.getLastname();
+        this.email = dto.getEmail();
+        this.city = dto.getCity();
+        this.contact = dto.getContact();
     }
 
     public Integer getId() {
@@ -68,12 +85,25 @@ public class Aluna {
         this.city = city;
     }
 
-    public String getContact() {
+    public Integer getContact() {
         return contact;
     }
 
-    public void setContact(String contact) {
+    public void setContact(Integer contact) {
         this.contact = contact;
     }
 
+    public List<Nota> getResults() {
+        return results;
+    }
+
+    public void addResult(Nota res){
+        results.add(res);
+    }
+
+    public void removeResult(Nota res){
+        if (results.contains(res)) {
+            results.remove(res);
+        }
+    }
 }

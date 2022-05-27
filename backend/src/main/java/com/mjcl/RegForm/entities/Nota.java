@@ -1,5 +1,7 @@
 package com.mjcl.RegForm.entities;
 
+import com.mjcl.RegForm.dtos.NotaDTO;
+
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
